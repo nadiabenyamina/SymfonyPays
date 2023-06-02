@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block monTitre %}
+    {% for lePays in pays %}
+        {% if lePays.nom == nom %}
+            {{ lePays.nom|upper }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center align-items-center mx-5">
+        {% for lePays in pays %}
+            {% if lePays.nom == nom %}
+                <div>
+                    <img src="{{ asset('images/capitale/' ~ lePays.imgCap ~ '.png') }}" style="width: 450px">
+                </div>
+                <div class="text-white ps-5 me-5" style="width: 1000px;">
+                    <p>{{ lePays.para1 }} <br><br>
+                        {{ lePays.para2 }} <br><br>
+                        {{ lePays.para3 }} <br><br>
+                        {{ lePays.para4 }}
+                    </p>
+                </div>
+            {% endif %} 
+        {% endfor %}
+</div>
+{% endblock %}
